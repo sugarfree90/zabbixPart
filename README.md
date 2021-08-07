@@ -31,6 +31,7 @@ Without the "init" parameter, the program will add day to day partitions and rem
         python3 ./zabbixPart.py 7 history zabbixDatabase zabbixDatabaseLogin zabbixDatabasePassword init
 
 ### Check if there is a need for a new partition - you can put it in Cron
+Ihave programmed Cron to run it at start and everyday at some hour
 
         python3 ./zabbixPart.py 7 history zabbixDatabase zabbixDatabaseLogin zabbixDatabasePassword
 
