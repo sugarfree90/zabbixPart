@@ -16,7 +16,7 @@ Without the "init" parameter, the program will add day to day partitions and rem
 3. Check wether the time to the end of the last partition is less than interval
 4. If so, create partition
 
-## Requirements if you want to use python version
+## Requirements
 1. Install mysql.connector
     ```
     sudo pip3 install mysql.connector
