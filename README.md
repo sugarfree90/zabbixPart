@@ -18,9 +18,9 @@ Without the "init" parameter, the program will add day to day partitions and rem
 
 ## Requirements
 1. Install mysql.connector
-    ```
+
     sudo pip3 install mysql.connector
-    ```
+
 ## Usage
     ```
     python3 ./zabbixPart.py [interval] [tablename] [dbname] [login] [pass] [init]
