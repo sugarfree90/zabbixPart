@@ -27,9 +27,9 @@ Without the "init" parameter, the program will add day to day partitions and rem
 ## Example
 ### Partition existing zabbix database
     ```
-    zabbixPart 7 history zabbixDatabase zabbixDatabaseLogin zabbixDatabasePassword init
+    python3 ./zabbixPart.py 7 history zabbixDatabase zabbixDatabaseLogin zabbixDatabasePassword init
     ```
 ### Check if there is a need for a new partition - you can put it in Cron
     ```
-    zabbixPart 7 history zabbixDatabase zabbixDatabaseLogin zabbixDatabasePassword
+    python3 ./zabbixPart.py 7 history zabbixDatabase zabbixDatabaseLogin zabbixDatabasePassword
     ```
