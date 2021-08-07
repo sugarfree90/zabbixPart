@@ -35,3 +35,7 @@ Ihave programmed Cron to run it at start and everyday at some hour
 
         python3 ./zabbixPart.py 7 history zabbixDatabase zabbixDatabaseLogin zabbixDatabasePassword
 
+
+##To Do:
+1. Check wether table have data before partitioning
+2. Check if there is enough space on the disk to perform partitioning (because the program is duplicating the table)
