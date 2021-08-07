@@ -42,6 +42,7 @@ def partition(tablename, interval):
 
     print("get first day of the data")
     Query = ("SELECT FROM_UNIXTIME(MIN(clock)) FROM "+tablename+";")
+    print(Query)
     cursor.execute(Query)
     for val in cursor:
         partTimestamp = int(val[0].timestamp())
@@ -49,6 +50,7 @@ def partition(tablename, interval):
 
     print("get last day of the data")
     Query = ("SELECT FROM_UNIXTIME(MAX(clock)) FROM "+tablename+";")
+    print(Query)
     cursor.execute(Query)
     for val in cursor:
         print(val[0])
@@ -167,30 +169,33 @@ def dailyRoutine(tablename, interval):
 
 
 if len(sys.argv) < 4 or sys.argv[1] == "help":
-    print("usage: zabbixPart [dbname] [login] [pass] [init]")
+    print("usage: zabbixPart [interval] [tablename] [dbname] [login] [pass] [init]")
+    print("[interval] = in days, how big should partitions be")
+    print("[tablename] = name of the zabbix table")
     print("[dbname] = name of the zabbix database")
     print("[login] = login to the zabbix database")
     print("[password] = password to the zabbix database")
     print("[init] = OPTIONAL, pass \"init\" to initialize the partitioning if you have not done it already")
+    print("")
+    print("[interval] - for [init] partitioning, the interval can be as long as you want")
+    print("but for day to day partitions you can change it, but remember,")
+    print("the data need to have a partition!")
+    print("[tablename] - should be a table which contains a \"clock\" column")
+    print("for example: trends, trends_uint, history, history_log, etc...")
+    print("[init] - remember that you can always repartition partitioned table")
+    print("for example when you want to change the interval")
 else:
-    dbName = sys.argv[1]
-    dbLogin = sys.argv[2]
-    dbPass = sys.argv[3]
-    if len(sys.argv) > 4:
-        if sys.argv[4] == "init":
+    interval = sys.argv[1]
+    tablename = sys.argv[2]
+    dbName = sys.argv[3]
+    dbLogin = sys.argv[4]
+    dbPass = sys.argv[5]
+    print("interval: "+str(interval)+" days")
+    print("tablename: "+tablename)
+
+    if len(sys.argv) > 5:
+        if sys.argv[6] == "init":
             print("Starting partitioning tables with data and trends")
-            partition("trends", 30)
-            partition("trends_uint", 30)
-            partition("history", 1)
-            partition("history_log", 1)
-            partition("history_str", 1)
-            partition("history_text", 1)
-            partition("history_uint", 1)
+            partition(tablename, int(interval))
     else:
-        dailyRoutine("trends", 30)
-        dailyRoutine("trends_uint", 30)
-        dailyRoutine("history", 1)
-        dailyRoutine("history_log", 1)
-        dailyRoutine("history_str", 1)
-        dailyRoutine("history_text", 1)
-        dailyRoutine("history_uint", 1)
+        dailyRoutine(tablename, int(interval))
