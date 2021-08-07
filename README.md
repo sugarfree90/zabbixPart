@@ -22,18 +22,18 @@ Without the "init" parameter, the program will add day to day partitions and rem
     ```
 ## Usage
     ```
-    zabbixPart [dbname] [login] [pass] [init]
+    zabbixPart [interval] [tablename] [dbname] [login] [pass] [init]
     ```
 or if you want to use the uncompiled version
     ```
-    python3 zabbixPart.py [dbname] [login] [pass] [init]
+    python3 zabbixPart.py [interval] [tablename] [dbname] [login] [pass] [init]
     ```
 ## Example
 ### Partition existing zabbix database
     ```
-    zabbixPart zabbixDatabase zabbixDatabaseLogin zabbixDatabasePassword init
+    zabbixPart 7 history zabbixDatabase zabbixDatabaseLogin zabbixDatabasePassword init
     ```
 ### Check if there is a need for a new partition - you can put it in Cron
     ```
-    zabbixPart zabbixDatabase zabbixDatabaseLogin zabbixDatabasePassword
+    zabbixPart 7 history zabbixDatabase zabbixDatabaseLogin zabbixDatabasePassword
     ```
