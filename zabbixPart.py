@@ -193,7 +193,7 @@ else:
     print("interval: "+str(interval)+" days")
     print("tablename: "+tablename)
 
-    if len(sys.argv) > 5:
+    if len(sys.argv) > 4:
         if sys.argv[6] == "init":
             print("Starting partitioning tables with data and trends")
             partition(tablename, int(interval))
