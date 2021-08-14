@@ -193,9 +193,9 @@ else:
     print("interval: "+str(interval)+" days")
     print("tablename: "+tablename)
 
-    if len(sys.argv) > 4:
+    try:
         if sys.argv[6] == "init":
             print("Starting partitioning tables with data and trends")
             partition(tablename, int(interval))
-    else:
+    except:
         dailyRoutine(tablename, int(interval))
