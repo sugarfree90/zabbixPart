@@ -5,7 +5,7 @@ It allows you to partition existing mysql zabbix database when run with "init" p
 In order to partition existing zabbix it will:
 1. Create temporary table with structure of the original
 2. Check the range of the data (time data from the first and last entry)
-3. Create partition in temp table for each interval (default 30 days for trends and 1 day for history)
+3. Create partition in temp table for each interval
 4. Copy data from original table to the partitioned temp table
 5. Drop the original table
 6. Rename the temp table so it will become the original table, but partitioned
